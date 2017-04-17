@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="description" content="">
+	    <meta name="author" content="">
+	    <link rel="icon" href="#">
+
+	    <title></title>
+
+	    <!-- Bootstrap core CSS -->
+	    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+	    <!--Offline.js-->
+ 		<link href="content/offline-theme-default.css" rel="stylesheet">
+ 		<link href="content/offline-language-portuguese-brazil.css" rel="stylesheet">
+
+	    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	    <!--[if lt IE 9]>
+	      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+	</head>
+
+	<style type="text/css">
+		body.bg-01{background-color: #eee;}
+		body.bg-02{background-color: #454A81;}
+		.ohcWrapper {background-color: #fff; width: 100%; min-height: 500px; margin-top: 200px;}
+		.ohcWrapper.moregray {background-color: #E7EBEE;}
+		.radius {border-radius: 15px;}
+		.basic-shadow {box-shadow: 4px 4px 5px #888888;}
+		.full-shadow-gray {-webkit-box-shadow: 11px 9px 42px -1px rgba(148,148,148,0.54);
+							-moz-box-shadow: 11px 9px 42px -1px rgba(148,148,148,0.54);
+							box-shadow: 11px 9px 42px -1px rgba(148,148,148,0.54);}
+		.full-shadow-softblue {-webkit-box-shadow: 11px 9px 42px -1px rgba(47,51,87,1);
+							-moz-box-shadow: 11px 9px 42px -1px rgba(47,51,87,1);
+							box-shadow: 11px 9px 42px -1px rgba(47,51,87,1);}
+		.menu-style {font-size: smaller;font-weight: 600;color:silver;}
+		h3{padding: 0px;}
+
+		a.todolistCheck{text-decoration: line-through !important;}
+
+		.popover{
+        	max-width:600px !important;
+    	}
+
+		/* Sidebar Styles */
+		.sidebar-nav {
+		    position: absolute;
+		    top: 0;
+		    width: 250px;
+		    margin: 0;
+		    padding: 0;
+		    list-style: none;
+		}
+
+		.sidebar-nav li {
+		    text-indent: 20px;
+		    line-height: 40px;
+		}
+
+		.sidebar-nav li a {
+		    display: block;
+		    text-decoration: none;
+		    color: #999999;
+		}
+
+		.sidebar-nav li a:hover {
+		    text-decoration: none;
+		    color: #fff;
+		    background: rgba(255,255,255,0.2);
+		}
+
+		.sidebar-nav li a:active,
+		.sidebar-nav li a:focus {
+		    text-decoration: none;
+		}
+
+		.sidebar-nav > .sidebar-brand {
+		    height: 45px;
+		    font-size: 18px;
+		    line-height: 60px;
+		}
+
+		.sidebar-nav > .sidebar-brand a {
+		    color: #999999;
+		}
+
+		.sidebar-nav > .sidebar-brand a:hover {
+		    color: #fff;
+		    background: none;
+		}
+	</style>
+
+  	<body class="bg-02">
+  		<!-- Sidebar -->
+        <div id="sidebar-wrapper" style="position: absolute;">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="https://docs.google.com/document/d/1SPcqhJtLHImlMH0oynXpDWpvplJeFrzs7HZGAogrdxY/edit" style="color: white;" target="_blank">
+                        Arquitetura - App Base 
+                    </a>
+                </li>
+                <li><a href="#" class="todolistCheck" data-toggle="popover" data-placement="right" data-content="Bootstrap 3.3.7">Bootstrap 3.3.7</a></li>
+                <li><a href="#">CDN Static Loac</a></li>
+                <li><a href="#">Javascript Strict Mode</a></li>
+                <li><a href="#" class="todolistCheck" data-toggle="popover" data-placement="right" data-content="https://cdnjs.com/libraries/angular.js/">Angular 1.6.1</a></li>
+                <li>
+                    <a href="#" data-trigger="focus" data-toggle="popoverlg" data-placement="right">Page Load Time</a>
+                    <div class="popper-content hide">
+                		http://qnimate.com/measuring-web-page-performance-using-modern-javascript-apis/
+						https://www.html5rocks.com/en/tutorials/webperformance/basics/
+						https://www.w3.org/TR/navigation-timing/
+						http://www.samdutton.com/navigationTiming/
+						http://www.c-sharpcorner.com/UploadFile/5089e0/count-page-loading-time-using-javascript/
+                    </div>
+                </li>
+                <li><a href="https://zenorocha.com/html5-async-scripts/" data-toggle="popover" data-placement="right" data-content="Async & Defer">Async & Defer</a></li>
+                <li><a href="http://www.createjs.com/getting-started/preloadjs" data-toggle="popoverlg" data-placement="right">Preload Content</a>
+                	<div class="popper-content hide">
+                		https://css-tricks.com/prefetching-preloading-prebrowsing/<br/>
+                		http://www.createjs.com/getting-started/preloadjs
+                    </div>
+                </li>
+                <li><a href="#" data-toggle="popoverlg" data-placement="right" data-content="Require.js - Order JS loading">Require.js</a>
+            		<div class="popper-content hide">
+                		https://www.sitepoint.com/understanding-requirejs-for-effective-javascript-module-loading/<br/>
+                		http://requirejs.org/docs/start.html
+                    </div>
+                </li>
+                <li><a href="#" data-toggle="popoverlg" data-placement="right">Angular Submit Loader</a>
+                	<div class="popper-content hide">
+                		https://rawgit.com/jvdvleuten/angular-button-spinner/master/demo.html<br/>
+                		https://johannesjo.github.io/angular-promise-buttons/#!#demo<br/>
+                		http://jsfiddle.net/xc6nx235/16/
+                    </div>
+                </li>
+                <li><a href="#" class="todolistCheck" data-toggle="popoverlg" data-placement="right">Connection Offline.js</a>
+                	<div class="popper-content hide">
+                		https://github.com/HubSpot/offline<br/>
+                		http://github.hubspot.com/offline/docs/welcome/
+                    </div>
+                </li>
+                <li><a href="#">Wizard JS Tutorial</a></li>
+                <li><a href="#">Timeline JS</a></li>
+                <li><a href="#">Minify Content</a></li>
+                <li><a href="#">Translate & Culture</a></li>
+                <li><a href="#" data-trigger="focus" data-toggle="popover" data-placement="right" data-content="Bootstro.js ou Hightlight">Guided Tour</a></li>
+                <li><a href="https://uxdesign.cc/forms-need-validation-2ecbccbacea1#.47pktt8i9">[UX]Forms Need Validation</a></li>
+                <li><a href="javascript:void(0);">Customer FeedBack</a></li>
+                <li><a href="https://docs.angularjs.org/api/ngMessages/">ngMessages</a></li>
+                <li class="sidebar-brand">
+                    <a href="#" style="color: white;">
+                        Filosofia de Trabalho 
+                    </a>
+                </li>
+                <li><a href="#">Chartjunk</a></li>
+				<li><a href="#">Don't repeat yourself (DRY)</a></li>
+				<li><a href="#">Minimalism (computing)</a></li>
+				<li><a href="#">Reduced instruction set computing</a></li>
+				<li><a href="#">Rule of least power</a></li>
+				<li><a href="#">There's more than one way to do it</a></li>
+				<li><a href="#">Unix philosophy</a></li>
+				<li><a href="#">Worse is better (Less is more)</a></li>
+				<li><a href="#">You aren't gonna need it (YAGNI)</a></li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+	    <div class="container" ng-app="MyApp" ng-controller="MyController">
+			<div class="row">
+				<div class="col-md-2"></div>
+			  	<div class="col-md-5">
+			  		<div class="ohcWrapper moregray full-shadow-softblue">
+			  			<div class="container-fluid">
+				  			<div class="row">
+				  				<div class="pull-left">
+				  					<ul class="nav nav-pills" role="tablist">
+									  <li role="presentation"><a class="menu-style" href="#">Estatísticas</a></li>
+									  <li role="presentation"><a class="menu-style" href="#">Exportar/Importar</a></li>
+									  <li role="presentation"><a class="menu-style" href="#">API</a></li>
+									  <li role="presentation"><a class="menu-style" href="#">Info</a></li>
+									</ul>
+				  				</div>
+				  			</div>
+				  			<div class="row">
+				  				<div style="padding: 1px 10px 5px 20px;">
+			  						<a href="#" data-trigger="focus" data-toggle="popoverlg" data-placement="bottom">FORNECEDORES</a>
+		  							<div class="popper-content hide">
+		  								<span>Nome</span><br/>
+				                		<span>CPF/CNPJ</span><br/>
+										<span>Razão social</span><br/>
+										<span>Inscrição Estadual/Municipal</span><br/>
+										<span>E-mail</span><br/>
+										<span>End. Completo</span><br/>
+										<span>Responsável pela empresa</span><br/>
+										<span>Pessoa de Contato/Telefone/Setor</span><br/>
+										<span>Informação Bancária (Contas)</span><br/>
+										<span>Informações adicionais (Campo de texto)</span><br/>
+				                    </div>
+         						</div>
+				  			</div>
+				  			<div class="row">
+			  					<div style="padding: 15px 35px 15px 25px;">
+						            <form class="form-horizontal" role="form">
+						                <!--<div class="form-group">
+						                	<div class="col-lg-12" >
+						                    	<label for="firstName" class="col-sm-3 control-label">Razão Social</label>
+						                        <input type="text" id="firstName" placeholder="Nome completo" class="form-control" autofocus>
+						                        <span class="help-block">Nome ou Razão Social do fornecedor</span>
+						                    </div>
+						                </div>-->
+						                <div class="form-group col-md-6 col-sm-6 col-lg-10">
+								            <label for="firstName" class="control-label">Razão Social</label>
+					                        <input type="text" id="firstName" placeholder="Nome completo" class="form-control" autofocus>
+					                        <span class="help-block">Nome ou Razão Social do fornecedor</span>
+								        </div>
+								        <div class="form-group col-md-6 col-sm-6 col-lg-10">
+								            <label for="email" class="control-label">Email</label>
+					                        <input type="email" id="email" placeholder="Email" class="form-control">
+					                        <span class="help-block">exemplo@gmail.com</span>
+								        </div>
+					                	<div class="form-group col-md-6 col-sm-6 col-lg-10">
+						                    <div>
+						                        <button type="button" class="btn btn-success btn-sm" ng-click="toggleLoading()" button-spinner="loading" ng-disabled="loading">Salvar Fornecedor</button>
+						                    </div>
+						                </div>
+						            </form> <!-- /form -->
+						        </div> <!-- ./container -->
+				  			</div>
+			  			</div>
+			  		</div>
+			  	</div>
+			  	<div class="col-md-5">
+			  		<div class="ohcWrapper moregray full-shadow-softblue">
+			  			<div class="container-fluid">
+				  			<div class="row">
+				  				<div style="padding: 5px 10px 5px 20px;">
+				  					<a href="#" data-trigger="focus" data-toggle="popoverlg" data-placement="bottom">GRID FORNECEDORES</a>
+				  					<div class="popper-content hide">
+			  						</div>
+         						</div>
+				  			</div>
+				  			<div class="row"></div>
+			  			</div>
+			  		</div>
+			  	</div>
+			</div>
+	    </div> <!-- /container -->
+
+	    <!--External CDN Script-->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+		<!--O download do script é feito de forma assíncrona mas sua execução se dá apenas quando todo o processo de renderização estiver concluído.-->
+		<script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+
+		<!--Carrega assincrono para browser que suportam senao usa o defer-->
+		<script async defer src="scripts/offline.min.js"></script>
+		<script async defer src="scripts/angular-button-spinner.js"></script>
+
+		<!--Local Scripts-->
+		<script>
+			//angular.module('MyApp', ['angular-button-spinner']);
+			var mainApp = angular.module('MyApp', ['angular-button-spinner']);
+			mainApp.controller('MyController', ['$scope','$timeout',
+				function ($scope, $timeout) {
+					$scope.loading = false;
+
+					$scope.toggleLoading = function() {
+						$scope.loading = true;
+						
+						$timeout(function() { 
+							$scope.loading = false;
+						}, 2000);
+					};
+				}
+			]);
+
+			$(document).ready(function(){
+				/*Bootstrap Popover*/
+			    $('[data-toggle="popover"]').popover(); 
+			    $('[data-toggle="popoverlg"]').popover({
+				    placement: 'right',
+				    container: 'body',
+				    html: true,
+				    content: function () {
+				        return $(this).next('.popper-content').html();
+				    }
+				});
+
+			    /*Offline.js*/
+		     	Offline.options.reconnect = { initialDelay: 60 };
+	            var allInputs = $(":input, .btn");
+
+	            Offline.on('confirmed-down', function () {
+	                allInputs.attr('disabled', 'disabled');
+	            });
+
+	            Offline.on('confirmed-up', function () {
+	                allInputs.removeAttr('disabled');
+	            });
+			});
+		</script>
+	</body>
+</html>
