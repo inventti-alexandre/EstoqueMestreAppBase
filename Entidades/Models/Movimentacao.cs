@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace Entidades.Models
 {
@@ -9,11 +7,17 @@ namespace Entidades.Models
     {
         [Key]
         public int IdMovimentacao { get; set; }
+        
+        [MaxLength(150)]
         public string Observacao { get; set; }
         public bool Estornada { get; set; }
+        
+        [Required]
         public char TipoOperacao { get; set; }
         public decimal Quantidade { get; set; }
         public decimal Valor { get; set; }
+
+        [Required]
         public DateTime DataCadastro { get; set; }
         public int IdCliente { get; set; }
         public int IdFornecedor { get; set; }

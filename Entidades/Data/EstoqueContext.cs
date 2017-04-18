@@ -1,9 +1,5 @@
 ﻿using Entidades.Models;
 using Microsoft.EntityFrameworkCore;
-using MySQL.Data.EntityFrameworkCore.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Entidades.Data
 {

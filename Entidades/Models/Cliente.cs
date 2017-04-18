@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace Entidades.Models
 {
@@ -9,8 +7,15 @@ namespace Entidades.Models
     {
         [Key]
         public int IdCliente { get; set; }
+
+        [MaxLength(100)]
         public string Nome { get; set; }
+        
+        [Required][MaxLength(80)]
         public string Email { get; set; }
+
+        [Required]        
+        public bool Deletado { get; set; }
         public DateTime DataCadastro { get; set; }
     }
 }
