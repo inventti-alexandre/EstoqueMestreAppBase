@@ -19,6 +19,9 @@ namespace Entidades.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Cliente>().ToTable("Cliente");
+            modelBuilder.Entity<Produto>().ToTable("Produto");
+            modelBuilder.Entity<Fornecedor>().ToTable("Fornecedor");
+            modelBuilder.Entity<Movimentacao>().ToTable("Movimentacao");
         }
 
 
