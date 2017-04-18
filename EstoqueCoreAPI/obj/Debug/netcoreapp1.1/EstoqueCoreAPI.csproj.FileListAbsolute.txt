@@ -28,3 +28,4 @@ C:\Users\Rodrigo\Dropbox\Repositorios GIT\EstoqueMestreAppBase\EstoqueCoreAPI\bi
 C:\Users\Rodrigo\Dropbox\Repositorios GIT\EstoqueMestreAppBase\EstoqueCoreAPI\obj\Debug\netcoreapp1.1\EstoqueCoreAPI.AssemblyInfo.cs
 C:\Users\Rodrigo\Dropbox\Repositorios GIT\EstoqueMestreAppBase\EstoqueCoreAPI\obj\Debug\netcoreapp1.1\EstoqueCoreAPI.dll
 C:\Users\Rodrigo\Dropbox\Repositorios GIT\EstoqueMestreAppBase\EstoqueCoreAPI\obj\Debug\netcoreapp1.1\EstoqueCoreAPI.pdb
+C:\Users\Rodrigo\Dropbox\Repositorios GIT\EstoqueMestreAppBase\EstoqueCoreAPI\obj\Debug\netcoreapp1.1\EstoqueCoreAPI.csprojResolveAssemblyReference.cache

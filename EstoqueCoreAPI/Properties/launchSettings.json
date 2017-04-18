@@ -16,6 +16,13 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
+    "IIS Express (Staging)": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Staging"
+      }
+    },
     "EstoqueCore": {
       "commandName": "Project",
       "launchBrowser": true,
