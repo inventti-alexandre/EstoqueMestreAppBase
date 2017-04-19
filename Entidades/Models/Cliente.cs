@@ -7,13 +7,14 @@ namespace Entidades.Models
 {
     public class Cliente
     {
-        [Key][DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdCliente { get; set; }
 
-        [MaxLength(100)]
+        [StringLength(100)]
         public string Nome { get; set; }
         
-        [Required][MaxLength(80)]
+        [Required][StringLength(80)]
         public string Email { get; set; }
 
         [Required]        

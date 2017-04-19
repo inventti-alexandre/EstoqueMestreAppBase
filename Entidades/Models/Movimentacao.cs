@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -6,11 +7,14 @@ namespace Entidades.Models
 {
     public class Movimentacao
     {
-        [Key][DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdMovimentacao { get; set; }
         
-        [MaxLength(150)]
+        [StringLength(150)]
         public string Observacao { get; set; }
+        
+        [DefaultValue(false)]
         public bool Estornada { get; set; }
         
         [Required]

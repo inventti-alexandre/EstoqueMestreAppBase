@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EstoqueCoreAPI</name>
+    </assembly>
+    <members>
+        <member name="M:EstoqueCore.Controllers.ClienteController.GetById(System.Int64)">
+            <summary>
+            Retorna um cliente pelo seu ID
+            </summary>
+            <param name="id">Chave primária no banco</param>
+        </member>
+    </members>
+</doc>

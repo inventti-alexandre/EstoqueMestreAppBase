@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
@@ -8,19 +9,22 @@ namespace Entidades.Models
 {
     public class Fornecedor
     {
-        [Key][DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdFornecedor { get; set; }
 
-        [Required][MaxLength(80)]
+        [Required]
+        [StringLength(80)]
         public string RazaoSocial { get; set; }
 
-        [MaxLength(14)]
+        [StringLength(14)]
         public string CNPJ { get; set; }
 
-        [MaxLength(20)]
+        [StringLength(20)]
         public string Telefone { get; set; }
 
         [Required]
+        [DefaultValue(true)]
         public bool Ativo { get; set; }
 
         [Required]

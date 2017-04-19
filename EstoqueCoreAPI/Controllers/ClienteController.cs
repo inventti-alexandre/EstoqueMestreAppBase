@@ -22,6 +22,10 @@ namespace EstoqueCore.Controllers
             return _clienteRepository.GetAll();
         }
 
+        /// <summary>
+        /// Retorna um cliente pelo seu ID
+        /// </summary>
+        /// <param name="id">Chave primária no banco</param>
         [HttpGet("{id}", Name = "GetCliente")]
         public IActionResult GetById(long id)
         {

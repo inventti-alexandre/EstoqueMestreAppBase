@@ -9,3 +9,4 @@ C:\Users\Rodrigo\Dropbox\Repositorios GIT\EstoqueMestreAppBase\EstoqueCoreAPI\bi
 C:\Users\Rodrigo\Dropbox\Repositorios GIT\EstoqueMestreAppBase\EstoqueCoreAPI\bin\Debug\netcoreapp1.1\Entidades.pdb
 C:\Users\Rodrigo\Dropbox\Repositorios GIT\EstoqueMestreAppBase\EstoqueCoreAPI\obj\Debug\netcoreapp1.1\EstoqueCoreAPI.dll
 C:\Users\Rodrigo\Dropbox\Repositorios GIT\EstoqueMestreAppBase\EstoqueCoreAPI\obj\Debug\netcoreapp1.1\EstoqueCoreAPI.pdb
+C:\Users\Rodrigo\Dropbox\Repositorios GIT\EstoqueMestreAppBase\EstoqueCoreAPI\bin\Debug\netcoreapp1.1\EstoqueCoreAPI.xml

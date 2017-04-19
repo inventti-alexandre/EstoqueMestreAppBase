@@ -8564,9 +8564,6 @@
       "originalTargetFrameworks": [
         "netcoreapp1.1"
       ],
-      "files": {
-        "lib/netcoreapp1.1/Entidades.dll": "C:\\Users\\Rodrigo\\Dropbox\\Repositorios GIT\\EstoqueMestreAppBase\\Entidades\\bin\\placeholder\\netcoreapp1.1\\Entidades.dll"
-      },
       "frameworks": {
         "netcoreapp1.1": {
           "projectReferences": {}
@@ -8576,13 +8573,14 @@
     "frameworks": {
       "netcoreapp1.1": {
         "dependencies": {
-          "Microsoft.NETCore.App": {
-            "target": "Package",
-            "version": "1.1.1"
-          },
           "MySql.Data.EntityFrameworkCore": {
             "target": "Package",
             "version": "7.0.7-m61"
+          },
+          "Microsoft.NETCore.App": {
+            "target": "Package",
+            "version": "1.1.1",
+            "autoReferenced": true
           }
         }
       }
