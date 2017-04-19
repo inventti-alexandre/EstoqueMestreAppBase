@@ -1,11 +1,12 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entidades.Models
 {
     public class Movimentacao
     {
-        [Key]
+        [Key][DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdMovimentacao { get; set; }
         
         [MaxLength(150)]

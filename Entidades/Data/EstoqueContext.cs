@@ -6,6 +6,9 @@ namespace Entidades.Data
     public class EstoqueContext : DbContext
     {
         public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Produto> Produto { get; set; }
+        public DbSet<Fornecedor> Fornecedor { get; set; }
+        public DbSet<Movimentacao> Movimentacao { get; set; }
 
         public EstoqueContext(DbContextOptions<EstoqueContext> options) : base(options)
         {

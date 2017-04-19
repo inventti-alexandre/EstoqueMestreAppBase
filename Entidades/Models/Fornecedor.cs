@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Entidades.Models
 {
     public class Fornecedor
     {
-        [Key]
+        [Key][DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdFornecedor { get; set; }
 
         [Required][MaxLength(80)]
@@ -24,6 +25,7 @@ namespace Entidades.Models
 
         [Required]
         public DateTime DataCadastro { get; set; }
-        public virtual List<Produto> produtos { get; set; }
+        public virtual ICollection<Produto> produtos { get; set; }
+        public virtual ICollection<Movimentacao> movimentacoes { get; set; }
     }
 }

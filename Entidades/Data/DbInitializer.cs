@@ -10,21 +10,41 @@ namespace Entidades.Data
         public static void Initialize(EstoqueContext context)
         {
             context.Database.EnsureCreated();
-            if (context.Clientes.Any())
-            {
-                return;
-            }
+            #region DADOS CLIENTES
+                if (context.Clientes.Any())
+                    return;
+                
+                var clientes = new Cliente[]
+                {
+                    new Cliente{Nome="Alex Carson",Email="alex@gmail.com",DataCadastro=DateTime.Parse("2005-09-01")},
+                };
 
-            var clientes = new Cliente[]
-            {
-                new Cliente{Nome="Alex Carson",Email="alex@gmail.com",DataCadastro=DateTime.Parse("2005-09-01")},
-            };
+                foreach (Cliente s in clientes)
+                {
+                    context.Clientes.Add(s);
+                }
+                context.SaveChanges();
+            #endregion
 
-            foreach (Cliente s in clientes)
-            {
-                context.Clientes.Add(s);
-            }
-            context.SaveChanges();
+            #region DADOS FORNECEDORES
+                if (context.Fornecedor.Any())
+                    return;
+                
+                var fornecedores = new Fornecedor[]
+                {
+                    new Fornecedor{RazaoSocial="Techshift",
+                                    CNPJ=null,
+                                    Telefone="",
+                                    Ativo=true,
+                                    DataCadastro=DateTime.Parse("2017-01-01")},
+                };
+
+                foreach (Fornecedor s in fornecedores)
+                {
+                    context.Fornecedor.Add(s);
+                }
+                context.SaveChanges();
+            #endregion
         }
     }
 }
