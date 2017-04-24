@@ -10,6 +10,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EstoqueCoreWeb", "EstoqueCoreWeb\EstoqueCoreWeb.csproj", "{48A9CE18-223F-4D8D-9E8E-4ADEA9DD7343}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EstoqueCore.Tests", "EstoqueCore.Tests\EstoqueCore.Tests.csproj", "{3725E808-2DE0-4A78-9E4D-93499D077277}"
+	ProjectSection(ProjectDependencies) = postProject
+		{87D823F5-678A-459E-8FD4-B3A10147FD2F} = {87D823F5-678A-459E-8FD4-B3A10147FD2F}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

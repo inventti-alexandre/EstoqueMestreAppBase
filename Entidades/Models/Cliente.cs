@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -19,7 +20,12 @@ namespace Entidades.Models
 
         [Required]        
         public bool Deletado { get; set; }
+
         public DateTime DataCadastro { get; set; }
         public virtual ICollection<Movimentacao> movimentacoes { get; set; }
+
+        public Cliente(){
+            this.DataCadastro = DateTime.Now;
+        }
     }
 }

@@ -17,6 +17,7 @@ namespace Entidades.Data
                 var clientes = new Cliente[]
                 {
                     new Cliente{Nome="Alex Carson",Email="alex@gmail.com",DataCadastro=DateTime.Parse("2005-09-01")},
+                    new Cliente{Nome="David Ruskel",Email="fruy77@gmail.com"},
                 };
 
                 foreach (Cliente s in clientes)

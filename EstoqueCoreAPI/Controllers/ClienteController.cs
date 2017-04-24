@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Entidades.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,6 +14,9 @@ namespace EstoqueCore.Controllers
             _clienteRepository = clienteRepository;
         }
 
+        /// <summary>
+        /// Retorna todos os clientes
+        /// </summary>
         [HttpGet]
         public IEnumerable<Cliente> GetAll()
         {
@@ -34,7 +35,23 @@ namespace EstoqueCore.Controllers
             {
                 return NotFound();
             }
-            return new ObjectResult(item);
+            return new OkObjectResult(item);
+        }
+
+        /// <summary>
+        /// Registra um novo cliente
+        /// </summary>
+        /// <param name="item">Objeto cliente</param>
+        [HttpPost]
+        public IActionResult Create([FromBody] Cliente item)
+        {
+            if (item == null){
+                return BadRequest();
+            }
+                   
+            _clienteRepository.Add(item);
+
+            return CreatedAtRoute("GetCliente", new { id = item.IdCliente }, item);
         }
     }
 }
