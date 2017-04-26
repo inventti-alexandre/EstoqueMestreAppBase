@@ -33,7 +33,7 @@ namespace Entidades.Models
         public bool EstoqueBaixo { get; set; }
         public DateTime DataCadastro { get; set; }
         public int IdFornecedor { get; set; }
-        public virtual Fornecedor fornecedor { get; set; }
-        public virtual ICollection<Movimentacao> movimentacoes { get; set; }
+        public virtual Fornecedor Fornecedor { get; set; }
+        public virtual ICollection<Movimentacao> Movimentacoes { get; set; }
     }
 }

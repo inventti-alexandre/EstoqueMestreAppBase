@@ -1,5 +1,6 @@
 ﻿using Entidades.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Entidades.Data
 {
@@ -21,6 +22,12 @@ namespace Entidades.Data
             modelBuilder.Entity<Produto>().ToTable("Produto");
             modelBuilder.Entity<Fornecedor>().ToTable("Fornecedor");
             modelBuilder.Entity<Movimentacao>().ToTable("Movimentacao");
+
+            modelBuilder.Entity<Movimentacao>()
+                .HasOne(p => p.Produto)
+                .WithMany(b => b.Movimentacoes)
+                .HasForeignKey(p => p.IdProduto)
+                .OnDelete(DeleteBehavior.Restrict);
         }
 
 

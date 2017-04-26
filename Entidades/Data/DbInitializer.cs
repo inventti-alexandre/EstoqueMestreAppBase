@@ -9,7 +9,10 @@ namespace Entidades.Data
 
         public static void Initialize(EstoqueContext context)
         {
+            //Retorna true se o banco foi criado, false se já existe
             context.Database.EnsureCreated();
+
+            //Executa o Seed do banco nas tabelas de Carga
             #region DADOS CLIENTES
                 if (context.Clientes.Any())
                     return;
@@ -28,23 +31,23 @@ namespace Entidades.Data
             #endregion
 
             #region DADOS FORNECEDORES
-                if (context.Fornecedor.Any())
-                    return;
+                //if (context.Fornecedor.Any())
+                //    return;
                 
-                var fornecedores = new Fornecedor[]
-                {
-                    new Fornecedor{RazaoSocial="Techshift",
-                                    CNPJ=null,
-                                    Telefone="",
-                                    Ativo=true,
-                                    DataCadastro=DateTime.Parse("2017-01-01")},
-                };
+                //var fornecedores = new Fornecedor[]
+                //{
+                //    new Fornecedor{RazaoSocial="Techshift",
+                //                    Cnpj=null,
+                //                    Telefone="",
+                //                    Ativo=true,
+                //                    DataCadastro=DateTime.Parse("2017-01-01")},
+                //};
 
-                foreach (Fornecedor s in fornecedores)
-                {
-                    context.Fornecedor.Add(s);
-                }
-                context.SaveChanges();
+                //foreach (Fornecedor s in fornecedores)
+                //{
+                //    context.Fornecedor.Add(s);
+                //}
+                //context.SaveChanges();
             #endregion
         }
     }

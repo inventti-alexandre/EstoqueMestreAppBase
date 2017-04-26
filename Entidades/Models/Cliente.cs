@@ -12,20 +12,33 @@ namespace Entidades.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdCliente { get; set; }
 
-        [StringLength(100)]
+        [Display(Name = "Nome")]
+        [DataType(DataType.Text)]
+        [Required(ErrorMessage = "O campo nome é obrigatório.")]
+        [StringLength(100, ErrorMessage = "O {0} deve ter pelo menos {2} caracteres.", MinimumLength = 3)]
         public string Nome { get; set; }
-        
-        [Required][StringLength(80)]
+
+        [DataType(DataType.Text)]
+        [Display(Name = "Sobrenome")]
+        public string Sobrenome { get; set; }
+
+        [StringLength(80)]
+        [Display(Name = "Email")]
+        [Required(ErrorMessage = "O campo Email é obrigatório.")]
+        [EmailAddress(ErrorMessage = "O campo Emila não é um endereço de email válido..")]        
         public string Email { get; set; }
 
-        [Required]        
+        [Required]
+        [DefaultValue(false)]
         public bool Deletado { get; set; }
 
         public DateTime DataCadastro { get; set; }
-        public virtual ICollection<Movimentacao> movimentacoes { get; set; }
 
-        public Cliente(){
-            this.DataCadastro = DateTime.Now;
+        public virtual ICollection<Movimentacao> Movimentacoes { get; set; }
+
+        public Cliente()
+        {
+            DataCadastro = DateTime.Now;
         }
     }
 }

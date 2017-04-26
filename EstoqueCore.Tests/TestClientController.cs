@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Entidades.Models;
 using EstoqueCore.Controllers;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +12,7 @@ namespace EstoqueCore.Tests
 {
     public class TestSimpleClientController
     {
-        private List<Cliente> GetTestSessions()
+        private IList<Cliente> GetTestSessions()
         {
             var sessions = new List<Cliente>
             {
@@ -33,40 +34,78 @@ namespace EstoqueCore.Tests
         }
 
         [Fact]
-        public void GetAllClientes()
+        public async Task GetAllClientes()
         {
-            // Arrange
+            //Arrange
             var mockRepo = new Mock<IClienteRepository>();
-            mockRepo.Setup(repo => repo.GetAll()).Returns(GetTestSessions());
+            mockRepo.Setup(repo => repo.GetAllAsync())
+                    .Returns(Task.FromResult(GetTestSessions()));
             var controller = new ClienteController(mockRepo.Object);
 
             // Act
-            var result = controller.GetAll();
+            var result = await controller.GetAllAsync();
             Assert.Equal(2, result.Count());
         }
 
         [Fact]
-        public void GetClienteById()
+        public async Task GetClienteById()
         {
             // Arrange
             var expectedID = 1;
             var mockRepo = new Mock<IClienteRepository>();
-            mockRepo.Setup(repo => repo.Find(expectedID))
-                .Returns(GetTestSessions().FirstOrDefault(s => s.IdCliente == expectedID));
+            mockRepo.Setup(repo => repo.GetByIdAsync(expectedID))
+                    .Returns(Task.FromResult(GetTestSessions().FirstOrDefault(s => s.IdCliente == expectedID)));
             var controller = new ClienteController(mockRepo.Object);
 
             // Act
-            var result = controller.GetById(expectedID);
+            var result = await controller.GetByIdAsync(expectedID);
             var okResult = result as OkObjectResult;
 
             Assert.NotNull(okResult);
             Assert.Equal(200, okResult.StatusCode);
         }
 
-        [Fact(Skip = "Pendente de implementa��o")] 
-        public void CreateClient()
+        [Fact] 
+        public async Task CreateClient()
         {
-            
+            // Arrange
+            var expected = new Cliente()
+            {
+                IdCliente = 3,
+                Nome = "Test Name",
+                Email = "test@hotmail.com"
+            };
+            var newCliente = new Cliente()
+            {
+                Nome = "Test Name",
+                Email = "test@hotmail.com"
+            };
+
+            var mockRepo = new Mock<IClienteRepository>();
+            mockRepo.Setup(repo => repo.AddAsync(expected))
+                    .Returns(Task.FromResult(newCliente));
+
+            var controller = new ClienteController(mockRepo.Object);
+
+            // Act
+            var result = await controller.CreateAsync(newCliente);
+
+            //Assert
+            var okResult = result as CreatedAtRouteResult;
+            Assert.NotNull(okResult);
+            Assert.Equal(201, okResult.StatusCode);
+        }
+
+        [Fact(Skip = "Pendente de implementação")]
+        public void UpdateClient()
+        {
+
+        }
+
+        [Fact(Skip = "Pendente de implementação")]
+        public async Task DeleteClient()
+        {
+
         }
     }
 }

@@ -1,13 +1,16 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Entidades.Models
 {
     public interface IClienteRepository
     {
         void Add(Cliente item);
-        IEnumerable<Cliente> GetAll();
-        Cliente Find(long key);
-        void Remove(long key);
+        Task AddAsync(Cliente item);
+        Task<IList<Cliente>> GetAllAsync();
+        Task<Cliente> GetByIdAsync(long id);
+        Cliente GetById(long id);
+        void Remove(long id);
         void Update(Cliente item);
     }
 }

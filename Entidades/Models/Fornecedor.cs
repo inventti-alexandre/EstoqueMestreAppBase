@@ -17,7 +17,7 @@ namespace Entidades.Models
         public string RazaoSocial { get; set; }
 
         [StringLength(14)]
-        public string CNPJ { get; set; }
+        public string Cnpj { get; set; }
 
         [StringLength(20)]
         public string Telefone { get; set; }
@@ -28,7 +28,7 @@ namespace Entidades.Models
 
         [Required]
         public DateTime DataCadastro { get; set; }
-        public virtual ICollection<Produto> produtos { get; set; }
-        public virtual ICollection<Movimentacao> movimentacoes { get; set; }
+        public virtual ICollection<Produto> Produtos { get; set; }
+        public virtual ICollection<Movimentacao> Movimentacoes { get; set; }
     }
 }

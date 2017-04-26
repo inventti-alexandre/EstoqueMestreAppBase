@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Entidades.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,9 +19,9 @@ namespace EstoqueCore.Controllers
         /// Retorna todos os clientes
         /// </summary>
         [HttpGet]
-        public IEnumerable<Cliente> GetAll()
+        public async Task<IList<Cliente>> GetAllAsync()
         {
-            return _clienteRepository.GetAll();
+            return await _clienteRepository.GetAllAsync();
         }
 
         /// <summary>
@@ -28,30 +29,70 @@ namespace EstoqueCore.Controllers
         /// </summary>
         /// <param name="id">Chave primária no banco</param>
         [HttpGet("{id}", Name = "GetCliente")]
-        public IActionResult GetById(long id)
+        public async Task<IActionResult> GetByIdAsync(long id)
         {
-            var item = _clienteRepository.Find(id);
-            if (item == null)
-            {
-                return NotFound();
+            var item = await _clienteRepository.GetByIdAsync(id);
+            if (item == null){
+                return NotFound(id);
             }
-            return new OkObjectResult(item);
+            return Ok(item);
         }
 
         /// <summary>
-        /// Registra um novo cliente
+        /// Registra um novo cliente de forma assíncrona
         /// </summary>
         /// <param name="item">Objeto cliente</param>
         [HttpPost]
-        public IActionResult Create([FromBody] Cliente item)
+        public async Task<IActionResult> CreateAsync([FromBody] Cliente item)
         {
             if (item == null){
                 return BadRequest();
             }
                    
-            _clienteRepository.Add(item);
-
+            await _clienteRepository.AddAsync(item);
             return CreatedAtRoute("GetCliente", new { id = item.IdCliente }, item);
+        }
+
+        /// <summary>
+        /// Atualiza os dados de um cliente
+        /// </summary>
+        /// <param name="id">Id do objeto cliente que será atualizado</param>
+        /// <param name="item">Objeto cliente</param>
+        [HttpPut("{id}")]
+        public IActionResult Update(long id, [FromBody] Cliente item)
+        {
+            if (item == null || item.IdCliente != id){
+                return BadRequest();
+            }
+
+            var cliente = _clienteRepository.GetById(id);
+            if (cliente == null){
+                return NotFound();
+            }
+
+            cliente.Nome = item.Nome;
+            cliente.Email = item.Email;
+            cliente.DataCadastro = item.DataCadastro;
+            cliente.Deletado = item.Deletado;
+
+            _clienteRepository.Update(cliente);
+            return new NoContentResult();
+        }
+
+        /// <summary>
+        /// Remove um determinado cliente
+        /// </summary>
+        /// <param name="id">Id do cliente que será excluído</param>
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(long id)
+        {
+            var cliente = await _clienteRepository.GetByIdAsync(id);
+            if (cliente == null){
+                return NotFound();
+            }
+
+            _clienteRepository.Remove(id);
+            return new NoContentResult();
         }
     }
 }

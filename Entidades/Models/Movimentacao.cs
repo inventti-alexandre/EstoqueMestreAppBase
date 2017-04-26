@@ -27,8 +27,8 @@ namespace Entidades.Models
         public int IdCliente { get; set; }
         public int IdFornecedor { get; set; }
         public int IdProduto { get; set; }
-        public virtual Cliente cliente { get; set; }
-        public virtual Fornecedor fornecedor { get; set; }
-        public virtual Produto produto { get; set; }
+        public virtual Cliente Cliente { get; set; }
+        public virtual Fornecedor Fornecedor { get; set; }
+        public virtual Produto Produto { get; set; }
     }
 }

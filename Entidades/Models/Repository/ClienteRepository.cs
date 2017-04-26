@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Entidades.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Entidades.Models
 {
@@ -11,14 +13,11 @@ namespace Entidades.Models
         public ClienteRepository(EstoqueContext context)
         {
             _context = context;
-
-            if( _context.Clientes.Count() == 0)
-                Add(new Cliente { Nome = "Item1" });
         }
 
-        public IEnumerable<Cliente> GetAll()
+        public async Task<IList<Cliente>> GetAllAsync()
         {
-            return _context.Clientes.ToList();
+            return await _context.Clientes.ToListAsync();
         }
 
         public void Add(Cliente item)
@@ -27,14 +26,24 @@ namespace Entidades.Models
             _context.SaveChanges();
         }
 
-        public Cliente Find(long key)
+        public async Task AddAsync(Cliente item)
         {
-            return _context.Clientes.FirstOrDefault(t => t.IdCliente == key);
+            _context.Clientes.Add(item);
+            await _context.SaveChangesAsync();
         }
 
-        public void Remove(long key)
+        public async Task<Cliente> GetByIdAsync(long id)
         {
-            var entity = _context.Clientes.First(t => t.IdCliente == key);
+            return await _context.Clientes.FirstOrDefaultAsync(t => t.IdCliente == id);
+        }
+        public Cliente GetById(long id)
+        {
+            return _context.Clientes.FirstOrDefault(t => t.IdCliente == id);
+        }
+
+        public void Remove(long id)
+        {
+            var entity = _context.Clientes.First(t => t.IdCliente == id);
             _context.Clientes.Remove(entity);
             _context.SaveChanges();
         }
