@@ -35,5 +35,6 @@ namespace Entidades.Models
         public int IdFornecedor { get; set; }
         public virtual Fornecedor Fornecedor { get; set; }
         public virtual ICollection<Movimentacao> Movimentacoes { get; set; }
+        public virtual ICollection<Estoque> Estoques { get; set; }
     }
 }

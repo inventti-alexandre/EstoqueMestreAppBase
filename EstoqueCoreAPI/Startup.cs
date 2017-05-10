@@ -90,8 +90,9 @@ namespace EstoqueCore
         {
             app.UseStaticFiles();
 
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
+            loggerFactory
+                    .AddConsole(Configuration.GetSection("Logging"))
+                    .AddDebug();
 
             var options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(options.Value);

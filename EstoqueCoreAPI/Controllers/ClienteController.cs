@@ -3,25 +3,49 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Entidades.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace EstoqueCore.Controllers
 {
+
     [Route("api/[controller]")]
     public class ClienteController : Controller
     {
         private readonly IClienteRepository _clienteRepository;
-        public ClienteController(IClienteRepository clienteRepository)
+        private readonly ILogger _logger;
+
+        public ClienteController(IClienteRepository clienteRepository,
+                                ILogger<ClienteController> logger)
         {
             _clienteRepository = clienteRepository;
+            _logger = logger;
         }
 
         /// <summary>
         /// Retorna todos os clientes
         /// </summary>
         [HttpGet]
+        [Route("Cliente/GetAllAsync")]
         public async Task<IList<Cliente>> GetAllAsync()
         {
             return await _clienteRepository.GetAllAsync();
+        }
+
+        [HttpGet]
+        public JsonResult GetAll() {
+            var lista = _clienteRepository.GetAll();
+            if(lista != null) {
+                return this.Json(new {
+                    Result = lista,
+                    Error = false
+                });
+            }
+
+            return this.Json(new {
+                Result = "Nenhum CLIENTE encontrado.",
+                Error = true
+            });
         }
 
         /// <summary>
@@ -31,9 +55,15 @@ namespace EstoqueCore.Controllers
         [HttpGet("{id}", Name = "GetCliente")]
         public async Task<IActionResult> GetByIdAsync(long id)
         {
-            var item = await _clienteRepository.GetByIdAsync(id);
-            if (item == null){
-                return NotFound(id);
+            Cliente item;
+            using (_logger.BeginScope("ScoeLog GetByIdAsync"))
+            {
+                _logger.LogInformation(LoggingEvents.GET_ITEM, "Getting item {ID}", id);
+                item = await _clienteRepository.GetByIdAsync(id);
+                if (item == null){
+                    _logger.LogWarning(LoggingEvents.GET_ITEM_NOTFOUND, "GetById({ID}) NOT FOUND", id);
+                    return NotFound(id);
+                }
             }
             return Ok(item);
         }
@@ -93,6 +123,33 @@ namespace EstoqueCore.Controllers
 
             _clienteRepository.Remove(id);
             return new NoContentResult();
+        }
+
+         [HttpPost]
+        public JsonResult DeletarCliente(long id) {
+            _logger.LogInformation(LoggingEvents.GET_ITEM, "Getting item {ID}", id);
+            Cliente model = _clienteRepository.GetById(Convert.ToInt16(id));
+            if(model != null) {
+                string msg = "Cliente deletado.";
+                try{
+                    _clienteRepository.Remove(id);                    
+                }
+                catch (DbUpdateException ex){
+                    _logger.LogWarning(LoggingEvents.DELETE_ITEM, ex, "DeletarCliente({ID})", id);
+                    msg = "Falha ao deletar o cliente";
+                }
+
+                return this.Json(new {
+                    Error = false,
+                    Result = msg
+                });
+            }
+
+            _logger.LogWarning(LoggingEvents.GET_ITEM_NOTFOUND, "GetById({ID}) NOT FOUND", id);
+            return this.Json(new {
+                Result = "Nenhum cliente encontrado.",
+                Error = true
+            }); // JsonRequestBehavior.AllowGet não existe mais no aspnetcore 1.1
         }
     }
 }

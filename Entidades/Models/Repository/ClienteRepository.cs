@@ -15,6 +15,11 @@ namespace Entidades.Models
             _context = context;
         }
 
+        public IList<Cliente> GetAll()
+        {
+            return _context.Clientes.ToList();
+        }
+
         public async Task<IList<Cliente>> GetAllAsync()
         {
             return await _context.Clientes.ToListAsync();

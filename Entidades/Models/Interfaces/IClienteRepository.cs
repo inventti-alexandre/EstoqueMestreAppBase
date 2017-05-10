@@ -7,6 +7,7 @@ namespace Entidades.Models
     {
         void Add(Cliente item);
         Task AddAsync(Cliente item);
+        IList<Cliente> GetAll();
         Task<IList<Cliente>> GetAllAsync();
         Task<Cliente> GetByIdAsync(long id);
         Cliente GetById(long id);

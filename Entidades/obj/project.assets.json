@@ -8121,14 +8121,17 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Rodrigo\\Dropbox\\Repositorios GIT\\EstoqueMestreAppBase\\Entidades\\Entidades.csproj",
+      "projectUniqueName": "c:\\Users\\Rodrigo\\Dropbox\\Repositorios GIT\\EstoqueMestreAppBase\\Entidades\\Entidades.csproj",
       "projectName": "Entidades",
-      "projectPath": "C:\\Users\\Rodrigo\\Dropbox\\Repositorios GIT\\EstoqueMestreAppBase\\Entidades\\Entidades.csproj",
-      "outputPath": "C:\\Users\\Rodrigo\\Dropbox\\Repositorios GIT\\EstoqueMestreAppBase\\Entidades\\obj\\",
+      "projectPath": "c:\\Users\\Rodrigo\\Dropbox\\Repositorios GIT\\EstoqueMestreAppBase\\Entidades\\Entidades.csproj",
+      "outputPath": "c:\\Users\\Rodrigo\\Dropbox\\Repositorios GIT\\EstoqueMestreAppBase\\Entidades\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"
       ],
+      "files": {
+        "lib/netcoreapp1.1/Entidades.dll": "c:\\Users\\Rodrigo\\Dropbox\\Repositorios GIT\\EstoqueMestreAppBase\\Entidades\\bin\\placeholder\\netcoreapp1.1\\Entidades.dll"
+      },
       "frameworks": {
         "netcoreapp1.1": {
           "projectReferences": {}
@@ -8138,7 +8141,7 @@
     "frameworks": {
       "netcoreapp1.1": {
         "dependencies": {
-          "Pomelo.EntityFrameworkCore.MySql": {
+          "Microsoft.NETCore.App": {
             "target": "Package",
             "version": "1.1.1"
           },
@@ -8146,10 +8149,9 @@
             "target": "Package",
             "version": "1.1.0"
           },
-          "Microsoft.NETCore.App": {
+          "Pomelo.EntityFrameworkCore.MySql": {
             "target": "Package",
-            "version": "1.1.1",
-            "autoReferenced": true
+            "version": "1.1.1"
           }
         }
       }
