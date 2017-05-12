@@ -9,14 +9,14 @@ using Microsoft.Extensions.Logging;
 namespace EstoqueCore.Controllers
 {
 
+    [ServiceFilter(typeof(LogFilter))]
     [Route("api/[controller]")]
     public class ClienteController : Controller
     {
         private readonly IClienteRepository _clienteRepository;
-        private readonly ILogger _logger;
+        private readonly ILogger<ClienteController> _logger;
 
-        public ClienteController(IClienteRepository clienteRepository,
-                                ILogger<ClienteController> logger)
+        public ClienteController(IClienteRepository clienteRepository, ILogger<ClienteController> logger)
         {
             _clienteRepository = clienteRepository;
             _logger = logger;
@@ -56,7 +56,7 @@ namespace EstoqueCore.Controllers
         public async Task<IActionResult> GetByIdAsync(long id)
         {
             Cliente item;
-            using (_logger.BeginScope("ScoeLog GetByIdAsync"))
+            using (_logger.BeginScope("ScopeLog GetByIdAsync"))
             {
                 _logger.LogInformation(LoggingEvents.GET_ITEM, "Getting item {ID}", id);
                 item = await _clienteRepository.GetByIdAsync(id);
@@ -125,7 +125,12 @@ namespace EstoqueCore.Controllers
             return new NoContentResult();
         }
 
-         [HttpPost]
+
+        /// <summary>
+        /// Deleta um determinado cliente
+        /// </summary>
+        /// <param name="id">Id do cliente que será deletado</param>
+        [HttpPost("{id}", Name = "DeletarCliente")]
         public JsonResult DeletarCliente(long id) {
             _logger.LogInformation(LoggingEvents.GET_ITEM, "Getting item {ID}", id);
             Cliente model = _clienteRepository.GetById(Convert.ToInt16(id));

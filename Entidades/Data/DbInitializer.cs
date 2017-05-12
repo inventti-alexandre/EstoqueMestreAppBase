@@ -14,20 +14,20 @@ namespace Entidades.Data
 
             //Executa o Seed do banco nas tabelas de Carga
             #region DADOS CLIENTES
-                if (context.Clientes.Any())
-                    return;
+                // if (context.Clientes.Any())
+                //     return;
                 
-                var clientes = new Cliente[]
-                {
-                    new Cliente{Nome="Alex Carson",Email="alex@gmail.com",DataCadastro=DateTime.Parse("2005-09-01")},
-                    new Cliente{Nome="David Ruskel",Email="fruy77@gmail.com"},
-                };
+                // var clientes = new Cliente[]
+                // {
+                //     new Cliente{Nome="Alex Carson",Email="alex@gmail.com",DataCadastro=DateTime.Parse("2005-09-01")},
+                //     new Cliente{Nome="David Ruskel",Email="fruy77@gmail.com"},
+                // };
 
-                foreach (Cliente s in clientes)
-                {
-                    context.Clientes.Add(s);
-                }
-                context.SaveChanges();
+                // foreach (Cliente s in clientes)
+                // {
+                //     context.Clientes.Add(s);
+                // }
+                // context.SaveChanges();
             #endregion
 
             #region DADOS FORNECEDORES

@@ -11,6 +11,7 @@ namespace Entidades.Data
         public DbSet<Fornecedor> Fornecedores { get; set; }
         public DbSet<Movimentacao> Movimentacoes { get; set; }
         public DbSet<Estoque> Estoques { get; set; }
+        public DbSet<Log> Log { get; set; }
 
         public EstoqueContext(DbContextOptions<EstoqueContext> options) : base(options)
         {
@@ -19,11 +20,12 @@ namespace Entidades.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Cliente>().ToTable("Cliente");
-            modelBuilder.Entity<Produto>().ToTable("Produto");
-            modelBuilder.Entity<Fornecedor>().ToTable("Fornecedor");
-            modelBuilder.Entity<Movimentacao>().ToTable("Movimentacao");
-            modelBuilder.Entity<Estoque>().ToTable("Estoque");
+            modelBuilder.Entity<Cliente>().ToTable("Cliente", "estoque");
+            modelBuilder.Entity<Produto>().ToTable("Produto", "estoque");
+            modelBuilder.Entity<Fornecedor>().ToTable("Fornecedor", "estoque");
+            modelBuilder.Entity<Movimentacao>().ToTable("Movimentacao", "estoque");
+            modelBuilder.Entity<Estoque>().ToTable("Estoque", "estoque");
+            modelBuilder.Entity<Log>().ToTable("Log", "dbo");
 
             modelBuilder.Entity<Movimentacao>()
                 .HasOne(p => p.Produto)

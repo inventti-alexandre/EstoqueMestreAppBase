@@ -15,6 +15,10 @@ using Microsoft.Extensions.Options;
 using Microsoft.Extensions.PlatformAbstractions;
 using Swashbuckle.AspNetCore.Swagger;
 using Pomelo.EntityFrameworkCore.Extensions;
+using NLog;
+using NLog.Web;
+using NLog.Extensions.Logging;
+using EstoqueCore.Controllers;
 
 namespace EstoqueCore
 {
@@ -36,10 +40,10 @@ namespace EstoqueCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<EstoqueContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
-            //services.AddDbContext<EstoqueContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDbContext<EstoqueContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<EstoqueContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            
             services.AddScoped<IClienteRepository, ClienteRepository>();
-
             services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
             services
                 .AddMvc()
@@ -48,6 +52,7 @@ namespace EstoqueCore
                     opts => { opts.ResourcesPath = "Resources"; })
                 .AddDataAnnotationsLocalization();
 
+            services.AddScoped<LogFilter>();
             services.Configure<RequestLocalizationOptions>(
                 opts =>
                 {
@@ -88,11 +93,15 @@ namespace EstoqueCore
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, 
                             ILoggerFactory loggerFactory, EstoqueContext context)
         {
-            app.UseStaticFiles();
-
-            loggerFactory
+            app.UseStaticFiles();    
+        
+            loggerFactory.AddNLog()
                     .AddConsole(Configuration.GetSection("Logging"))
                     .AddDebug();
+            app.AddNLogWeb();
+
+            LogManager.Configuration.Variables["connectionString"] = Configuration.GetConnectionString("NLogDb");
+            LogManager.Configuration.Variables["configDir"] = "C:\\logs";
 
             var options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(options.Value);
